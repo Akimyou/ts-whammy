@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - 10.13.0
+script:
+  - npm run lint
+  - npm run test:unit -- --coverage
+  - npm run build:lib
+  - npm run build:demo
+  - npm run codecov
+deploy:
+  provider: npm
+  edge: true
+  email: "$NPM_EMAIL"
+  api_key: "$NPM_TOKEN"
+  skip_cleanup: true
+  on:
+    tags: true
