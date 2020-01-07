@@ -20,12 +20,17 @@ import tsWhammy from 'ts-whammy'
 // for ts
 // import tsWhammy from 'ts-whammy/src/libs'
 
+// images can from: canvas.toDataURL(type, encoderOptions)
 const images = ['data:image/webp;base64,UklGRkZg....',
   'data:image/webp;base64,UklGRkZg....']
+
 const blob = index.fromImageArray(images, 1)
 
 console.log(blob.type, blob.size)
 ```
+
+## Usage
+- record canvas frames to webm video
 
 ## Compatibility
 
@@ -35,18 +40,25 @@ console.log(blob.type, blob.size)
 ## Performance
 
 ```shell
-# MacBook Pro I7 2.2G
+# test data
+images info length(5),
+total base64 size(157.37890625 kb),
+total blob size(118.029296875 kb)
 
+# MacBook Pro I7 2.2G
 # node v10.13.0, benchmark
 --- testFromImageArray ---
 fromImageArray x 63.06 ops/sec ±2.74% (64 runs sampled)
 
 # chrome 79, simple loop test
 --- start test total count(100) ---
+...
+...
 end test total count(100),
-time(1037 ms),
-avg time(10.37 ms),
-ops/sec (96.43201542912247)
+time(697 ms),
+avg time(6.97 ms),
+ops/sec (143.47202295552367),
+webm size (118.1572265625 kb)
 ```
 
 ## Docs
@@ -59,7 +71,7 @@ fromImageArray(images: string[], fps: number, outputAsArray?: boolean): Blob | U
 
 - images: An array contain image base64 strings, image type must be 'image/webp', see more: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
 - fps: FPS number
-- outputAsArray: Get an Unit8Array output, default output is Blob. In node environment, output always be Unit8Array.
+- outputAsArray: Get an Unit8Array output, default output is Blob. In node environment, output always be Unit8Array
 
 ## Contribution
 
