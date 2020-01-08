@@ -4,17 +4,33 @@ import parseRIFF from './utils/parseRIFF'
 import { autoAtob } from './utils/adaptor'
 import { IWebP, IWebPFrame } from './interfaces'
 
+interface IFromImageArrayOptions {
+  fps?: number
+  duration?: number
+  outputAsArray?: boolean
+}
+
+const defaultFps = 1
+
 export default {
-  // TODO: support fixed duration
   fromImageArray(images: string[], fps: number, outputAsArray?: boolean): Blob | Uint8Array {
     const curOutputAsArray = typeof Blob !== 'undefined' ? outputAsArray : true
+    let curFps = fps || defaultFps
     return toWebM(images.map(image => {
       const webp: IWebP = parseWebP(parseRIFF(autoAtob(image.slice(23))))
       const webpFrame: IWebPFrame = {
         ...webp,
-        duration: 1000 / fps,
+        duration: 1000 / curFps,
       }
       return webpFrame
     }), curOutputAsArray)
   },
+  fromImageArrayWithOptions(images: string[], options: IFromImageArrayOptions = {}) {
+    const { fps, duration, outputAsArray } = options
+    let curFps = fps || defaultFps
+    if (duration) {
+      curFps = 1000 / ((duration * 1000) / images.length)
+    }
+    return this.fromImageArray(images, curFps, outputAsArray)
+  }
 }

@@ -24,7 +24,10 @@ import tsWhammy from 'ts-whammy'
 const images = ['data:image/webp;base64,UklGRkZg....',
   'data:image/webp;base64,UklGRkZg....']
 
+// fixed video's fpx
 const blob = index.fromImageArray(images, 1)
+// fixed video's duration(second)
+const blob = index.fromImageArrayWithOptions(images, { duration: 5 })
 
 console.log(blob.type, blob.size)
 ```
@@ -70,8 +73,18 @@ fromImageArray(images: string[], fps: number, outputAsArray?: boolean): Blob | U
 ```
 
 - images: An array contain image base64 strings, image type must be 'image/webp', see more: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
-- fps: FPS number
+- fps: FPS number, fps number can't be 0. (if you set it equal 0, it will be reset to default fps equal 1
 - outputAsArray: Get an Unit8Array output, default output is Blob. In node environment, output always be Unit8Array
+
+```ts
+fromImageArrayWithOptions(images: string[], options: IFromImageArrayOptions = {}): Blob | Uint8Array
+```
+
+- images: Same as fromImageArray's images
+- options:
+  - fps: Same as fromImageArray's fps
+  - duration(second): An value that set output video's duration. With it will adjust the video's fps value to make sure video have exact duration
+  - outputAsArray: Same as fromImageArray's outputAsArray
 
 ## Contribution
 
