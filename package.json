@@ -1,6 +1,6 @@
 {
   "name": "ts-whammy",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A modern typescript version of whammy. You can use it to encode images(webp) to webm video.",
   "keywords": [
     "whammy",
