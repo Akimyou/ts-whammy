@@ -21,7 +21,7 @@
     "test:performance": "ts-node --project tsconfig.lib.json -r tsconfig-paths/register ./tests/performance/index.spec.ts",
     "codecov": "codecov"
   },
-  "main": "lib/index.js",
+  "main": "libs/index.js",
   "types": "@types/index.d.ts",
   "dependencies": {},
   "devDependencies": {
