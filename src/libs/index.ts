@@ -15,7 +15,7 @@ const defaultFps = 1
 export default {
   fromImageArray(images: string[], fps: number, outputAsArray?: boolean): Blob | Uint8Array {
     const curOutputAsArray = typeof Blob !== 'undefined' ? outputAsArray : true
-    let curFps = fps || defaultFps
+    const curFps = fps || defaultFps
     return toWebM(images.map(image => {
       const webp: IWebP = parseWebP(parseRIFF(autoAtob(image.slice(23))))
       const webpFrame: IWebPFrame = {
@@ -32,5 +32,5 @@ export default {
       curFps = 1000 / ((duration * 1000) / images.length)
     }
     return this.fromImageArray(images, curFps, outputAsArray)
-  }
+  },
 }
