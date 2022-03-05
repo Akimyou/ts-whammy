@@ -3,6 +3,7 @@
     <h1>ts-whammy</h1>
     <button @click="testHandler">test</button>
     <p>test result is in console</p>
+    <video controls :src="videoUrl"></video>
   </div>
 </template>
 
@@ -14,8 +15,9 @@ const images = require('./images.json')
 
 @Component
 export default class App extends Vue {
-  private testHandler() {
-    const total = 100
+  public videoUrl: string = ''
+  private async testHandler() {
+    const total = 1000
     const totalStartTime = new Date().getTime()
     const imagesInfo = analyzeImages(images)
     let blob: null | Blob = null
@@ -27,9 +29,10 @@ export default class App extends Vue {
       total blob size(${imagesInfo.totalBlobSize} kb)`)
 
     for (let i = 1; i <= total; i++) {
-      blob = index.fromImageArray([...images], 1) as Blob
+      blob = index.fromImageArrayWithOptions([...images], { fps: 1 }) as Blob
       console.log('count++')
     }
+    this.videoUrl = await blobToBase64(blob)
 
     const totalEndTime = new Date().getTime() - totalStartTime
     console.log(`end test total count(${ total }),
@@ -54,6 +57,14 @@ function analyzeImages(curImages: string[]) {
     totalBase64Size,
     totalBlobSize,
   }
+}
+
+function blobToBase64(blob: any): Promise<string> {
+  return new Promise((resolve, _) => {
+    const reader = new FileReader()
+    reader.onloadend = () => resolve(reader.result as string)
+    reader.readAsDataURL(blob)
+  })
 }
 
 // https://stackoverflow.com/questions/16245767/creating-a-blob-from-a-base64-string-in-javascript
