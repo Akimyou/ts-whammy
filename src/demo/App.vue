@@ -2,7 +2,9 @@
   <div id="app">
     <h1>ts-whammy</h1>
     <button @click="testHandler">test</button>
-    <p>test result is in console</p>
+    <p>The test will compress the images list to an webm video.</p>
+    <p>Will do it 10 time, and record the avg time cost than output the webm the to video.</p>
+    <p>Test recorded result is in console.</p>
     <video controls :src="videoUrl"></video>
   </div>
 </template>
@@ -17,7 +19,7 @@ const images = require('./images.json')
 export default class App extends Vue {
   public videoUrl: string = ''
   private async testHandler() {
-    const total = 1000
+    const total = 10
     const totalStartTime = new Date().getTime()
     const imagesInfo = analyzeImages(images)
     let blob: null | Blob = null
