@@ -1,6 +1,6 @@
 import toWebM from './utils/toWebM'
 import parseWebP from './utils/parseWebP'
-import parseRIFF from './utils/parseRIFF'
+import parseRIFF from './utils/parseRIFF2'
 import { autoAtob } from './utils/adaptor'
 import { IWebP, IWebPFrame } from './interfaces'
 
