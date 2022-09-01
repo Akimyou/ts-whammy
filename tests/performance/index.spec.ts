@@ -23,7 +23,7 @@ async function testFromImageArray() {
       console.log(String(event.target))
     })
     .on('complete', () => {
-      resolve()
+      resolve(0)
       console.log('Fastest is ' + (suite.filter('fastest') as any).map('name'))
     })
     .run({ async: true })
