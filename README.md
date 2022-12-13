@@ -30,10 +30,10 @@ import tsWhammy from 'ts-whammy'
 const images = ['data:image/webp;base64,UklGRkZg....',
   'data:image/webp;base64,UklGRkZg....']
 
-// set videos fps
-const blob = index.fromImageArray(images, 1)
-// set videos duration (in seconds)
-const blob = index.fromImageArrayWithOptions(images, { duration: 5 })
+// create a video at 1 FPS
+const blob = tsWhammy.fromImageArray(images, 1)
+// create a 5 second video
+const blob = tsWhammy.fromImageArrayWithOptions(images, { duration: 5 })
 
 console.log(blob.type, blob.size)
 ```
