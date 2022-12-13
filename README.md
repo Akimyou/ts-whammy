@@ -2,7 +2,7 @@
 
 A modern typescript version of [whammy](https://github.com/antimatter15/whammy). You can use it to encode images(webp) to webm video.
 
-**ts-whammy** only includes the core functions of **whammy**, you can provide your own UI with whatever modern frontend stack you prefer.
+**ts-whammy** only includes the core video encoding functions of **whammy**, you can use it whatever modern frontend stack you prefer.
 
 ## Status
 [![](https://img.shields.io/npm/v/ts-whammy)](https://www.npmjs.com/package/ts-whammy)
