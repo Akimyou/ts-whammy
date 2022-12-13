@@ -2,7 +2,7 @@
 
 A modern typescript version of [whammy](https://github.com/antimatter15/whammy). You can use it to encode images(webp) to webm video.
 
-**ts-whammy** only include the core function of **whammy** then with modern frontend technology stack.
+**ts-whammy** only includes the core functions of **whammy**, you can provide your own UI with whatever modern frontend stack you prefer.
 
 ## Status
 [![](https://img.shields.io/npm/v/ts-whammy)](https://www.npmjs.com/package/ts-whammy)
@@ -26,13 +26,13 @@ import tsWhammy from 'ts-whammy'
 // for ts
 // import tsWhammy from 'ts-whammy/src/libs'
 
-// images can from: canvas.toDataURL(type, encoderOptions)
+// image URLs can from: canvas.toDataURL(type, encoderOptions)
 const images = ['data:image/webp;base64,UklGRkZg....',
   'data:image/webp;base64,UklGRkZg....']
 
-// fixed video's fpx
+// set videos fps
 const blob = index.fromImageArray(images, 1)
-// fixed video's duration(second)
+// set videos duration (in seconds)
 const blob = index.fromImageArrayWithOptions(images, { duration: 5 })
 
 console.log(blob.type, blob.size)
@@ -44,7 +44,7 @@ console.log(blob.type, blob.size)
 ## Compatibility
 
 - node
-- browser(support webp): https://caniuse.com/#feat=webp
+- browsers (must support webp): https://caniuse.com/#feat=webp
 
 ## Performance
 
@@ -78,19 +78,19 @@ webm size (118.1572265625 kb)
 fromImageArray(images: string[], fps: number, outputAsArray?: boolean): Blob | Uint8Array
 ```
 
-- images: An array contain image base64 strings, image type must be 'image/webp', see more: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
-- fps: FPS number, fps number can't be 0. (if you set it equal 0, it will be reset to default fps equal 1
-- outputAsArray: Get an Unit8Array output, default output is Blob. In node environment, output always be Unit8Array
+- `images`: An array of image base64 strings, image type must be 'image/webp', see more: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
+- `fps`: frames per second number, FPS number can't be 0. (if you set FPS to equal 0, FPS will be reset to default of 1).
+- `outputAsArray`: return `Uint8Array` output, the default output is` Blob`. In node environments, the output always be `Uint8Array`.
 
 ```ts
 fromImageArrayWithOptions(images: string[], options: IFromImageArrayOptions = {}): Blob | Uint8Array
 ```
 
-- images: Same as fromImageArray's images
-- options:
-  - fps: Same as fromImageArray's fps
-  - duration(second): An value that set output video's duration. With it will adjust the video's fps value to make sure video have exact duration
-  - outputAsArray: Same as fromImageArray's outputAsArray
+- `images`: Same as `fromImageArray's images
+- `options`:
+  - `fps`: Same as `fromImageArray`'s `fps`
+  - `duration` (seconds): An value that set output video's duration. With it will adjust the video's fps value to make sure video have exact duration
+  - `outputAsArray`: Same as `fromImageArray`'s `outputAsArray`
 
 ## Contribution
 
