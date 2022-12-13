@@ -89,7 +89,7 @@ fromImageArrayWithOptions(images: string[], options: IFromImageArrayOptions = {}
 - `images`: Same as `fromImageArray's images
 - `options`:
   - `fps`: Same as `fromImageArray`'s `fps`
-  - `duration` (seconds): An value that set output video's duration. With it will adjust the video's fps value to make sure video have exact duration
+  - `duration` set output video's duration in seconds. This will adjust the video's FPS to make sure the video has the exact duration.
   - `outputAsArray`: Same as `fromImageArray`'s `outputAsArray`
 
 ## Contribution
