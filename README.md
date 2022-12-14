@@ -95,3 +95,10 @@ fromImageArrayWithOptions(images: string[], options: IFromImageArrayOptions = {}
 ## Contribution
 
 Feel free to contribute this project.
+
+## TODO
+
+- update the demo, support record canvas/HTML, upload images to video...
+- upgrade vite to vite@latest
+- support build out the esm lib
+- update tests case, up test codecov
