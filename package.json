@@ -1,6 +1,6 @@
 {
   "name": "ts-whammy",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A modern typescript version of whammy. You can use it to encode images(webp) to webm video.",
   "keywords": [
     "whammy",
@@ -17,6 +17,7 @@
     "serve": "vite preview",
     "build:demo": "vite build",
     "build:lib": "rm -rf @types libs && tsc --build tsconfig.lib.json",
+    "prepublishOnly": "npm run build:lib",
     "codecov": "codecov",
     "test:unit": "jest tests/unit",
     "test:performance": "ts-node --project tsconfig.lib.json -r tsconfig-paths/register ./tests/performance/index.spec.ts"
