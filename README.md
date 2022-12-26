@@ -100,5 +100,5 @@ Feel free to contribute this project.
 
 - update the demo, support record canvas/HTML, upload images to video...
 - upgrade vite to vite@latest
-- support build out the esm lib
+- [✅]support build out the esm lib
 - update tests case, up test codecov
