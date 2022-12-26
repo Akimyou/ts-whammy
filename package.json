@@ -16,7 +16,7 @@
     "dev": "vite",
     "serve": "vite preview",
     "build:demo": "vite build",
-    "build:lib": "rm -rf @types libs && tsc --build tsconfig.lib.json && tsc --build tsconfig.lib.esm.json",
+    "build:lib": "rm -rf @types libs libs-esm && tsc --build tsconfig.lib.json && tsc --build tsconfig.lib.esm.json",
     "prepublishOnly": "npm run build:lib",
     "codecov": "codecov",
     "test:unit": "jest tests/unit",
