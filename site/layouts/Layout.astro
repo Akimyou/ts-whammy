@@ -2,7 +2,7 @@
 import 'github-markdown-css/github-markdown-light.css'
 
 export interface Props {
-	title: string;
+	title?: string;
 }
 
 const { content, title } = Astro.props;
@@ -14,7 +14,7 @@ const { content, title } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>{content.title || title || ''}</title>
+		<title>{content?.title || title || ''}</title>
 	</head>
 	<body>
 		<div style="padding: 16px 32px 32px 32px">
