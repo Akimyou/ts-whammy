@@ -13,9 +13,9 @@
     "url": "git+https://github.com/Akimyou/ts-whammy.git"
   },
   "scripts": {
-    "dev": "vite",
-    "serve": "vite preview",
-    "build:demo": "vite build",
+    "site:dev": "astro dev",
+    "site:build": "astro build",
+    "site:preview": "astro preview",
     "build:lib": "rm -rf @types libs libs-esm && tsc --build tsconfig.lib.json && tsc --build tsconfig.lib.esm.json",
     "prepublishOnly": "npm run build:lib",
     "codecov": "codecov",
@@ -34,14 +34,16 @@
     "benchmark": "^2.1.4",
     "codecov": "^3.8.3",
     "jest-environment-jsdom": "^29.0.1",
-    "solid-js": "^1.5.1",
-    "solid-styled-components": "^0.28.4",
     "ts-jest": "^28.0.8",
     "ts-node": "^10.9.1",
     "tsconfig-paths": "^3.9.0",
     "tslib": "^2.4.0",
     "typescript": "^4.8.2",
-    "vite": "^3.0.9",
-    "vite-plugin-solid": "^2.3.0"
+    "@astrojs/mdx": "^0.16.0",
+    "@astrojs/react": "^2.0.2",
+    "astro": "^2.0.6",
+    "github-markdown-css": "^5.1.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }

@@ -13,7 +13,7 @@
     "declaration": true,
     "declarationDir": "@types",
     "baseUrl": ".",
-    "types": ["vite/client", "jest", "node"],
+    "types": ["jest", "node"],
     "paths": {
       "@/*": ["src/*"]
     },

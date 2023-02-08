@@ -1,3 +1,10 @@
+---
+title: ts-whammy
+layout: ./site/layouts/Layout.astro
+---
+
+import { Demo } from './site/components/Demo'
+
 # ts-whammy
 
 A modern typescript version of [whammy](https://github.com/antimatter15/whammy). You can use it to encode images(webp) to webm video.
@@ -39,7 +46,12 @@ console.log(blob.type, blob.size)
 ```
 
 ## Usage
-- record canvas frames to webm video
+
+### Upload images to video
+
+<Demo client:visible/>
+
+> This Demo run on [website](https://www.baidu.com), [view source](../components/Demo.tsx)
 
 ## Compatibility
 
