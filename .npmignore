@@ -1,3 +1,7 @@
+# ignore site src
+/site
+/.github
+
 .DS_Store
 node_modules
 /dist
