@@ -3,8 +3,6 @@ title: ts-whammy
 layout: ./site/layouts/Layout.astro
 ---
 
-import { Demo } from './site/components/Demo'
-
 # ts-whammy
 
 A modern typescript version of [whammy](https://github.com/antimatter15/whammy). You can use it to encode images(webp) to webm video.
@@ -47,11 +45,7 @@ console.log(blob.type, blob.size)
 
 ## Usage
 
-### Upload images to video
-
-<Demo client:visible/>
-
-> The demo can't work on markdown file. Please click [see demo](https://akimyou.github.io/ts-whammy/#upload-images-to-video) or [view source](https://github.com/Akimyou/ts-whammy/blob/master/site/components/Demo.tsx)
+- [Upload images to video](https://akimyou.github.io/ts-whammy/demo1)
 
 ## Compatibility
 

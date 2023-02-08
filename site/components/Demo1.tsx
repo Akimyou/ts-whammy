@@ -39,7 +39,7 @@ const fileToDataUrl = (file: File) => {
   });
 };
 
-export const Demo = () => {
+export const Demo1 = () => {
   const [files, setFiles] = useState<File[]>([]);
   const [fpsRaw, setFpsRaw] = useState<string>("1");
   const fps = useMemo(() => {
