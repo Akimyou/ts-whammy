@@ -1,10 +1,12 @@
 /.github
 /site
+/tests
 
 .DS_Store
 node_modules
 /dist
 # /libs
+# /libs-esm
 # /@types
 /coverage
 
