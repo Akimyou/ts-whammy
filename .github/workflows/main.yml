@@ -18,5 +18,4 @@ jobs:
           npm ci
           npm run test:unit -- --coverage
           npm run build:lib
-          npm run build:demo
           npm run codecov
