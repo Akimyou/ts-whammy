@@ -1,6 +1,5 @@
-# ignore site src
-/site
 /.github
+/site
 
 .DS_Store
 node_modules
