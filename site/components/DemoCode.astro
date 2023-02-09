@@ -1,0 +1,13 @@
+---
+import { Code } from "astro/components";
+import { DemoCode } from "./DemoCode";
+import { SOURCE_CODE_BASE_URL } from '../config';
+
+const { sourceCodeUrl } = Astro.props;
+const result = await fetch(SOURCE_CODE_BASE_URL + sourceCodeUrl).then((res) => res.text());
+---
+
+<DemoCode client:visible>
+  <slot name="demo" />
+  <Code slot="code" code={result} lang="ts" theme="github-light" />
+</DemoCode>

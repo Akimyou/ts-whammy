@@ -1,10 +1,3 @@
----
-title: ts-whammy | Upload images to video
-layout: ../layouts/Layout.astro
----
-
-import { Demo1 } from '../components/Demo1'
-
 # ts-whammy
 
 A modern typescript version of [whammy](https://github.com/antimatter15/whammy). You can use it to encode images(webp) to webm video.
@@ -17,11 +10,3 @@ A modern typescript version of [whammy](https://github.com/antimatter15/whammy).
 [![](https://github.com/akimyou/ts-whammy/actions/workflows/main.yml/badge.svg)](https://github.com/Akimyou/ts-whammy/actions)
 [![](https://codecov.io/gh/Akimyou/ts-whammy/branch/master/graph/badge.svg)](https://codecov.io/gh/Akimyou/ts-whammy)
 [![](https://img.shields.io/npm/l/ts-whammy)](https://www.npmjs.com/package/ts-whammy)
-
-## Usage
-
-### Upload images to video
-
-<Demo1 client:visible/>
-
-> The demo can't work on markdown file. Please click [see demo](https://akimyou.github.io/ts-whammy/demo1) or [view source](https://github.com/Akimyou/ts-whammy/blob/master/site/components/Demo1.tsx)

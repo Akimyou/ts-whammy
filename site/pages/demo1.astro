@@ -1,0 +1,16 @@
+---
+import { Content } from "../components/common.md";
+import Layout from "../layouts/Layout.astro";
+import DemoCode from "../components/DemoCode.astro";
+import { Demo1 } from "../components/Demo1";
+---
+
+<Layout title={"ts-whammy - Upload images to video"}>
+  <Content />
+  <h3>Useage</h3>
+  <DemoCode
+    sourceCodeUrl="components/Demo1.tsx"
+  >
+    <Demo1 slot="demo" client:visible />
+  </DemoCode>
+</Layout>
