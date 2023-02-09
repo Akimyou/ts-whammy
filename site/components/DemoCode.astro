@@ -7,7 +7,7 @@ const { sourceCodeUrl } = Astro.props;
 const result = await fetch(SOURCE_CODE_BASE_URL + sourceCodeUrl).then((res) => res.text());
 ---
 
-<DemoCode client:visible>
+<DemoCode client:visible codeRaw={result}>
   <slot name="demo" />
   <Code slot="code" code={result} lang="ts" theme="github-light" />
 </DemoCode>
