@@ -85,6 +85,7 @@ export const Demo1 = () => {
         <li>
         Images:{" "}
           <input
+            style={{ width: '50%' }}
             onChange={(event) => {
               setFiles(Array.from(event.target.files || []))
             }}

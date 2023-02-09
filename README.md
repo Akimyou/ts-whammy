@@ -1,3 +1,7 @@
+[Github](https://github.com/Akimyou/ts-whammy) | [Npm](https://www.npmjs.com/package/ts-whammy) | [Home](https://akimyou.github.io/ts-whammy/)
+
+---
+
 # ts-whammy
 
 A modern typescript version of [whammy](https://github.com/antimatter15/whammy). You can use it to encode images(webp) to webm video.
