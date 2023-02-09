@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from "react";
 import tsWhammy from "../../../src/libs/index";
 
-// Test docs update
 const imageSrcToWebpDataUrl = (
   src: string,
   options?: {
