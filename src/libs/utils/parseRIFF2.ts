@@ -41,6 +41,9 @@ function extractBitStreamFromVp8x(buffer: string): ChunkSizeAndBinaryData {
     const chunkSize = readUint32LittleEndian(buffer, offset)
     offset += 4
     switch (chunkTag) {
+      case 'ICCP':
+      case 'ALPH':
+      case 'VP8':
       case 'VP8 ':
       case 'VP8L':
         // eslint-disable-next-line no-case-declarations
