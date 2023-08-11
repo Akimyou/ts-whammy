@@ -2,7 +2,7 @@
 import { Content } from "../components/common.md";
 import Layout from "../layouts/Layout.astro";
 import DemoCode from "../components/DemoCode.astro";
-import Demo1 from "../components/Demo1/Index";
+import { Demo1Cp } from "../components/Demo1/Index";
 ---
 
 <Layout title={"ts-whammy - Upload images to video"}>
@@ -12,6 +12,6 @@ import Demo1 from "../components/Demo1/Index";
   <DemoCode
     sourceCodeUrl="components/Demo1/Index.tsx"
   >
-    <Demo1 slot="demo" client:visible />
+    <Demo1Cp slot="demo" client:visible />
   </DemoCode>
 </Layout>

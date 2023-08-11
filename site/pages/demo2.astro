@@ -1,0 +1,27 @@
+---
+import { Content } from "../components/common.md";
+import Layout from "../layouts/Layout.astro";
+import DemoCode from "../components/DemoCode.astro";
+import { Demo2Cp } from "../components/Demo2/Index";
+---
+
+<Layout
+  title={"ts-whammy - Convert Canvas-recorded images into a video"}
+>
+  <Content />
+  <h3>Useage</h3>
+  <h4>Convert Canvas-recorded images into a video</h4>
+  <section>
+    <p>
+      Use <code>fixImageDataList</code> to address issues with inconsistent transparency
+      channels and image dimensions that cause video creation to fail.
+    </p>
+    <p>
+      To successfully create the video, ensure that the images have no
+      transparent background and consistent dimensions.
+    </p>
+  </section>
+  <DemoCode sourceCodeUrl="components/Demo2/Index.tsx">
+    <Demo2Cp slot="demo" client:visible />
+  </DemoCode>
+</Layout>

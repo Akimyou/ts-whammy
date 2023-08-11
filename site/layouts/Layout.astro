@@ -3,6 +3,9 @@ import 'github-markdown-css/github-markdown-light.css'
 
 export interface Props {
 	title?: string;
+	content?: {
+		title?: string;
+	};
 }
 
 const { content, title } = Astro.props;

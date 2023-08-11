@@ -1,13 +1,18 @@
 ---
 import { Code } from "astro/components";
-import { DemoCode } from "./DemoCode";
-import { SOURCE_CODE_BASE_URL } from '../config';
+import { DemoCodeCp } from "./DemoCodeCp";
+import { SOURCE_CODE_BASE_URL } from "../config";
 
 const { sourceCodeUrl } = Astro.props;
-const result = await fetch(SOURCE_CODE_BASE_URL + sourceCodeUrl).then((res) => res.text());
+const result =
+  process.env.NODE_ENV === "development"
+    ? "unsupport fetch source code on development"
+    : await fetch(SOURCE_CODE_BASE_URL + sourceCodeUrl).then((res) =>
+        res.text()
+      );
 ---
 
-<DemoCode client:visible codeRaw={result}>
+<DemoCodeCp client:visible codeRaw={result}>
   <slot name="demo" />
   <Code slot="code" code={result} lang="ts" theme="github-light" />
-</DemoCode>
+</DemoCodeCp>

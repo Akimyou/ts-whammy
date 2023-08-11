@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const DemoCode = (props: {
+export const DemoCodeCp = (props: {
   children?: React.ReactNode;
   code?: React.ReactNode;
   codeRaw?: string;

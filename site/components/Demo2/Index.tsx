@@ -1,23 +1,9 @@
 import React, { useMemo, useState } from "react";
 import tsWhammy from "../../../src/libs/index";
-import { imageSrcToWebpDataUrl } from "../../../src/libs/utils/imageSrcToWebpDataUrl";
+import { chartRecordingImages } from "./data";
 
-const fileToDataUrl = (file: File) => {
-  return new Promise<string>((resolve, reject) => {
-    const fileReader = new FileReader();
-    fileReader.onload = () => {
-      resolve(fileReader.result as string);
-    };
-    fileReader.onerror = (error) => {
-      reject(error);
-    };
-    fileReader.readAsDataURL(file);
-  });
-};
-
-export const Demo1Cp = () => {
-  const [files, setFiles] = useState<File[]>([]);
-  const [fpsRaw, setFpsRaw] = useState<string>("1");
+export const Demo2Cp = () => {
+  const [fpsRaw, setFpsRaw] = useState<string>("10");
   const fps = useMemo(() => {
     return parseInt(fpsRaw) ?? 0;
   }, [fpsRaw]);
@@ -36,16 +22,10 @@ export const Demo1Cp = () => {
     try {
       setLoading(true);
       setVideoSrc(undefined);
-      const result: string[] = [];
-      for (const item of files) {
-        const dataUrl = await fileToDataUrl(item);
-        const webpUrl = await imageSrcToWebpDataUrl(dataUrl, {
-          width,
-          height,
-        });
-        result.push(webpUrl);
-      }
-      const webm = await tsWhammy.fromImageArray(result, fps);
+      const fianal = await tsWhammy.fixImageDataList(chartRecordingImages, {
+        width, height, backgroundColor: '#FFF'
+      });
+      const webm = await tsWhammy.fromImageArray(fianal, fps);
       setVideoSrc(URL.createObjectURL(webm as Blob));
     } catch (error) {
       console.error(error);
@@ -57,18 +37,6 @@ export const Demo1Cp = () => {
   return (
     <div>
       <ul>
-        <li>
-        Images:{" "}
-          <input
-            style={{ width: '50%' }}
-            onChange={(event) => {
-              setFiles(Array.from(event.target.files || []))
-            }}
-            type="file"
-            multiple
-            accept=".jpeg,.jpg,.png,.webp"
-          ></input>
-        </li>
         <li>
           FPS:{" "}
           <input
@@ -124,7 +92,7 @@ export const Demo1Cp = () => {
             type={"number"}
           ></input>
         </li>
-        <li><button disabled={!files.length} onClick={makeVideo}>Make Video</button></li>
+        <li><button onClick={makeVideo}>Make Video</button></li>
       </ul>
       <p>
         {loading && <span style={{ marginRight: 8 }}>Loading...</span>}
