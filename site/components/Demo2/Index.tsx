@@ -1,8 +1,10 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import tsWhammy from "../../../src/libs/index";
-import { chartRecordingImages } from "./data";
+import { drawCanvas, recordCanvas, stopRecordCanvas } from './canvas';
 
 export const Demo2Cp = () => {
+  const [recording, setRecording] = useState<boolean>(false);
+  const [recordImages, setRecordImages] = useState<string[]>([]);
   const [fpsRaw, setFpsRaw] = useState<string>("10");
   const fps = useMemo(() => {
     return parseInt(fpsRaw) ?? 0;
@@ -22,8 +24,10 @@ export const Demo2Cp = () => {
     try {
       setLoading(true);
       setVideoSrc(undefined);
-      const fianal = await tsWhammy.fixImageDataList(chartRecordingImages, {
-        width, height, backgroundColor: '#FFF'
+      const fianal = await tsWhammy.fixImageDataList(recordImages, {
+        width,
+        height,
+        backgroundColor: "#FFF",
       });
       const webm = await tsWhammy.fromImageArray(fianal, fps);
       setVideoSrc(URL.createObjectURL(webm as Blob));
@@ -34,8 +38,32 @@ export const Demo2Cp = () => {
     }
   };
 
+  useEffect(() => {
+    drawCanvas()
+  }, []);
+
   return (
     <div>
+      <canvas
+        id="canvas"
+        width={300}
+        height={300}
+        style={{ border: "1px solid black", cursor: "crosshair" }}
+      ></canvas>
+      <ul>
+        <li>
+          <button disabled={recording} onClick={() => {
+            setRecording(true)
+            recordCanvas(fps)
+          }}>Start Record</button>
+          <button disabled={!recording} onClick={() => {
+            setRecordImages(stopRecordCanvas())
+            setRecording(false)
+          }} style={{ marginLeft: 8 }}>Stop Record</button>
+          <span style={{ marginLeft: 8 }}>{recording ? 'Recording' : ''}</span>
+          <span style={{ marginLeft: 8 }}>RecordImages: {recordImages.length}</span>
+        </li>
+      </ul>
       <ul>
         <li>
           FPS:{" "}
@@ -92,7 +120,9 @@ export const Demo2Cp = () => {
             type={"number"}
           ></input>
         </li>
-        <li><button onClick={makeVideo}>Make Video</button></li>
+        <li>
+          <button disabled={!recordImages.length} onClick={makeVideo}>Make Video</button>
+        </li>
       </ul>
       <p>
         {loading && <span style={{ marginRight: 8 }}>Loading...</span>}

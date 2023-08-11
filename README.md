@@ -116,7 +116,7 @@ Feel free to contribute this project.
 
 ## TODO
 
-- update the demo, support record canvas/HTML, ✅ upload images to video...
+- update the demo, support [✅ ]record canvas/[TODO]HTML, ✅ upload images to video...
 - [✅]upgrade docs to astro
 - [✅]support build out the esm lib
 - update tests case, up test codecov
