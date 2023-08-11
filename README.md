@@ -45,6 +45,7 @@ console.log(blob.type, blob.size)
 ## Usage
 
 - [Upload images to video](https://akimyou.github.io/ts-whammy/demo1)
+- [Convert Canvas-recorded images into a video](https://akimyou.github.io/ts-whammy/demo2)
 
 ## Compatibility
 
@@ -83,9 +84,9 @@ webm size (118.1572265625 kb)
 fromImageArray(images: string[], fps: number, outputAsArray?: boolean): Blob | Uint8Array
 ```
 
-- `images`: An array of image base64 strings, image type must be 'image/webp', see more: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL
+- `images`: An array of image base64 strings, image type must be 'image/webp', see more: https://developer.mozilla.org/en-US/docs/Web/API/HTMLCanvasElement/toDataURL. **`images` must have same width and height, must not have Alpha Channel**
 - `fps`: frames per second number, FPS number can't be 0. (if you set FPS to equal 0, FPS will be reset to default of 1).
-- `outputAsArray`: return `Uint8Array` output, the default output is` Blob`. In node environments, the output always be `Uint8Array`.
+- `outputAsArray`: return `Uint8Array` output, the default output is` Blob`. <del>In node environments, the output always be `Uint8Array`.</del>
 
 ```ts
 fromImageArrayWithOptions(images: string[], options: IFromImageArrayOptions = {}): Blob | Uint8Array
@@ -96,6 +97,18 @@ fromImageArrayWithOptions(images: string[], options: IFromImageArrayOptions = {}
   - `fps`: Same as `fromImageArray`'s `fps`
   - `duration` set output video's duration in seconds. This will adjust the video's FPS to make sure the video has the exact duration.
   - `outputAsArray`: Same as `fromImageArray`'s `outputAsArray`
+
+```ts
+async fixImageDataList(images: string[], options?: ImageSrcToWebpDataUrlOptions): Promise<string[]>
+```
+This function can make common image(jpg,png,webp...) url or base64 to be an valid webp image. Then can send it to `fromImageArrayWithOptions` make an video.
+See this demo: [Convert Canvas-recorded images into a video](https://akimyou.github.io/ts-whammy/demo2)
+
+- `images`: An array of image url or base64.
+- `options`
+  - `width`: image width for all, use it to fix image width
+  - `height`: image height for all, use it to fix image height
+  - `backgroundColor`: image background color, use it to fix image alpha channel
 
 ## Contribution
 
